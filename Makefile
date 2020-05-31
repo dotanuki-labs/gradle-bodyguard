@@ -10,3 +10,6 @@ pytests:
 
 build:
 	poetry build
+
+run:
+	poetry run main

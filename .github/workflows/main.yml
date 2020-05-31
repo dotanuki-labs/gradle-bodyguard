@@ -1,0 +1,25 @@
+name: Main
+
+on: push
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Project checkout
+        uses: actions/checkout@master
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.x'
+
+      - name: Install Poetry
+        uses: dschep/install-poetry-action@v1.3
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Run tests
+        run: make pytests

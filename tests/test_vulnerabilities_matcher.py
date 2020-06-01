@@ -1,4 +1,4 @@
-from gradle_bodyguard.vulnerabilities_matcher import match_vulnerabilities
+from gradle_bodyguard import vulnerabilities_matcher
 from .fakes import FakeOSSIndexFetcher
 
 def test_match_empty_dependencies():
@@ -8,7 +8,7 @@ def test_match_empty_dependencies():
 	fetcher = FakeOSSIndexFetcher(dependencies)
 
 	# When
-	vulnerabilities = match_vulnerabilities(dependencies, fetcher)
+	vulnerabilities = vulnerabilities_matcher.match(dependencies, fetcher)
 
 	# Then
 	assert len(vulnerabilities) == 0
@@ -28,7 +28,7 @@ def test_match_dependencies_when_fit_chunk_size():
 	fetcher = FakeOSSIndexFetcher(matched)
 
 	# When
-	vulnerabilities = match_vulnerabilities(dependencies, fetcher)
+	vulnerabilities = vulnerabilities_matcher.match(dependencies, fetcher)
 
 	# Then
 	assert vulnerabilities == matched
@@ -51,7 +51,7 @@ def test_match_dependencies_force_chunk_spliting():
 	fetcher = FakeOSSIndexFetcher(matched)
 
 	# When
-	vulnerabilities = match_vulnerabilities(dependencies, fetcher, chunk_size=2)
+	vulnerabilities = vulnerabilities_matcher.match(dependencies, fetcher, chunk_size=2)
 
 	# Then
 	assert vulnerabilities == matched

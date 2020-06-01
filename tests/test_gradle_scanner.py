@@ -1,4 +1,4 @@
-from gradle_bodyguard.gradle_scanner import find_dependencies
+from gradle_bodyguard import gradle_scanner
 from .fakes import FakeGradleRunner
 
 def test_project_without_dependencies():
@@ -36,7 +36,7 @@ def test_project_without_dependencies():
 	runner = FakeGradleRunner(projects, modules)
 
 	# When
-	(dependencies, ocurrences) = find_dependencies(runner)
+	(dependencies, ocurrences) = gradle_scanner.scan(runner)
 
 	# Then
 	assert len(dependencies) == 0
@@ -61,7 +61,7 @@ def test_root_module_only_with_distinct_ocurrences():
 	runner = FakeGradleRunner(projects, modules)
 
 	# When
-	(dependencies, ocurrences) = find_dependencies(runner)
+	(dependencies, ocurrences) = gradle_scanner.scan(runner)
 
 	# Then
 	expected_dependencies = {
@@ -103,7 +103,7 @@ def test_multiple_modules_distinct_ocurrences():
 	runner = FakeGradleRunner(projects, modules)
 
 	# When
-	(dependencies, ocurrences) = find_dependencies(runner)
+	(dependencies, ocurrences) = gradle_scanner.scan(runner)
 
 	# Then
 	expected_dependencies = {
@@ -148,7 +148,7 @@ def test_multiple_modules_repeated_ocurrences():
 	runner = FakeGradleRunner(projects, modules)
 
 	# When
-	(dependencies, ocurrences) = find_dependencies(runner)
+	(dependencies, ocurrences) = gradle_scanner.scan(runner)
 
 	# Then
 	expected_dependencies = {

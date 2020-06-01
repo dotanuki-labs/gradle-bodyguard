@@ -1,6 +1,6 @@
 from . import package_coordinates
 
-def generate_report(vulnerabilities, ocurrences):
+def generate(vulnerabilities, ocurrences):
 	
 	report = {
 		'has_issues': False,

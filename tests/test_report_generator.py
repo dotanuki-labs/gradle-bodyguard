@@ -1,6 +1,6 @@
 import json
 
-from gradle_bodyguard.report_generator import generate_report
+from gradle_bodyguard import report_generator
 
 def test_no_vulnerabilities():
 	
@@ -13,7 +13,7 @@ def test_no_vulnerabilities():
 	}
 
 	# When
-	report = generate_report(vulnerabilities, ocurrences)
+	report = report_generator.generate(vulnerabilities, ocurrences)
 
 	# Then
 	expected = {
@@ -35,7 +35,7 @@ def test_report_generation_unique_occurence_on_modules():
 	}
 
 	# When
-	report = generate_report(vulnerabilities, ocurrences)
+	report = report_generator.generate(vulnerabilities, ocurrences)
 
 	# Then
 	expected = {
@@ -63,7 +63,7 @@ def test_report_generation_multiple_occurence_on_modules():
 	}
 
 	# When
-	report = generate_report(vulnerabilities, ocurrences)
+	report = report_generator.generate(vulnerabilities, ocurrences)
 
 	# Then
 	expected = {

@@ -1,6 +1,6 @@
 __version__ = '0.1.0'
 
-from . import runner
+from . import app
 
 def main(argv=None):
-	runner.main(argv)
+	app.main(argv)

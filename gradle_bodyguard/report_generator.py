@@ -13,9 +13,10 @@ def generate(vulnerabilities, ocurrences):
 		for package, cve in sorted(vulnerabilities.items()):
 			maven_coordinates = coordinates_translator.ossindex_to_maven(package)
 			issue = {
-				'cve': nist_url(cve),
+				'cve': cve,
 				'dependency':maven_coordinates,
-				'usage_samples': samples(ocurrences, maven_coordinates)
+				'usage_samples': samples(ocurrences, maven_coordinates),
+				'learn_more': nist_url(cve),
 			}
 
 			report['issues'].append(issue)

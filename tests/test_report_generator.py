@@ -42,9 +42,10 @@ def test_report_generation_unique_occurence_on_modules():
 		'has_issues': True,
 		'issues':[
 			{
-				'cve':'https://nvd.nist.gov/vuln/detail/CVE-2018-20200',
+				'cve':'CVE-2018-20200',
 				'dependency':'com.squareup.okhttp3:okhttp:3.1.2',
-				'usage_samples':':'
+				'usage_samples':':',
+				'learn_more':'https://nvd.nist.gov/vuln/detail/CVE-2018-20200',
 			}
 		]
 	}
@@ -70,9 +71,10 @@ def test_report_generation_multiple_occurence_on_modules():
 		'has_issues': True,
 		'issues':[
 			{
-				'cve':'https://nvd.nist.gov/vuln/detail/CVE-2018-20200',
+				'cve':'CVE-2018-20200',
 				'dependency':'com.squareup.okhttp3:okhttp:3.1.2',
-				'usage_samples': ':core, :deeplinks'
+				'usage_samples': ':core, :deeplinks',
+				'learn_more':'https://nvd.nist.gov/vuln/detail/CVE-2018-20200',
 			}
 		]
 	}

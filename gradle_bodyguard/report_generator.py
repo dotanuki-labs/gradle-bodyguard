@@ -1,6 +1,6 @@
 from . import coordinates_translator
 
-def generate(vulnerabilities, ocurrences):
+def generate(vulnerabilities, ocurrences, must_ignore=[]):
 	
 	report = {
 		'has_issues': False,
@@ -8,19 +8,21 @@ def generate(vulnerabilities, ocurrences):
 	}
 	
 	if len(vulnerabilities) != 0:
-		report['has_issues'] = True
-
 		for package, cve in sorted(vulnerabilities.items()):
-			maven_coordinates = coordinates_translator.ossindex_to_maven(package)
-			issue = {
-				'cve': cve,
-				'dependency':maven_coordinates,
-				'usage_samples': samples(ocurrences, maven_coordinates),
-				'learn_more': nist_url(cve),
-			}
+			if cve not in must_ignore:
+				maven_coordinates = coordinates_translator.ossindex_to_maven(package)
+				issue = {
+					'cve': cve,
+					'dependency':maven_coordinates,
+					'usage_samples': samples(ocurrences, maven_coordinates),
+					'learn_more': nist_url(cve),
+				}
 
-			report['issues'].append(issue)
-
+				report['issues'].append(issue)
+		
+		if len(report['issues']) != 0:
+			report['has_issues'] = True
+	
 	return report
 
 def nist_url(cve):

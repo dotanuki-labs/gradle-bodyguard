@@ -1,15 +1,15 @@
+from . import package_coordinates
 
 CHUNK_SIZE_FOR_COORDINATES=100
 
 def match_vulnerabilities(dependencies, fetcher, chunk_size=CHUNK_SIZE_FOR_COORDINATES):
-    coordinates = ["pkg:maven/{}/{}@{}".format(*artefact.split(":")) for artefact in dependencies]
+    coordinates = [package_coordinates.maven_to_ossindex(artefact) for artefact in dependencies]
     chunks = list(chunkify(coordinates, chunk_size))
-    print(chunks)
     vulnerabilities = {}
 
     for chunk in chunks:
-    	for key, value in fetcher.fetch(chunk).items():
-    		vulnerabilities[key] = value
+    	for package, cve in fetcher.fetch(chunk).items():
+    		vulnerabilities[package] = cve
 
     return vulnerabilities
 

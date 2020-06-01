@@ -4,6 +4,7 @@ import re
 
 def scan(gradle_runner):
 	modules = compute_gradle_modules(gradle_runner)
+	print(f"🔥 Total number of Gradle modules → {len(modules)}")
 	return evaluate_dependencies(gradle_runner, modules)
 
 def compute_gradle_modules(gradle_runner):
@@ -18,6 +19,7 @@ def evaluate_dependencies(gradle_runner, modules):
 	dependencies = set()
 
 	for module in modules:
+		print(f"🔥 Evaluating dependencies for module → {module}")
 		for dependency in dependencies_per_module(gradle_runner, module):
 			dependencies.add(dependency)
 			if not ocurrences.get(dependency):

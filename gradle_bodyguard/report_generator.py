@@ -7,7 +7,7 @@ def generate(vulnerabilities, ocurrences):
 		'issues':[]
 	}
 	
-	if(vulnerabilities):
+	if len(vulnerabilities) != 0:
 		report['has_issues'] = True
 
 		for package, cve in sorted(vulnerabilities.items()):

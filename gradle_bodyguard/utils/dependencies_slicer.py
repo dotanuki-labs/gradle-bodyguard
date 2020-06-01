@@ -8,12 +8,10 @@ def slice(target, chunk_size):
 
 	while not done and end - start != 0:
 		if end - start < chunk_size:
-			print(target[start:end])
 			sliced.append(target[start:end])
 			done = True
 		else :
 			cutpoint = start + chunk_size
-			print(target[start:cutpoint])
 			sliced.append(target[start:cutpoint])
 			start = cutpoint
 

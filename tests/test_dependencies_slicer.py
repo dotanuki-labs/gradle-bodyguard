@@ -1,4 +1,4 @@
-from gradle_bodyguard import dependencies_slicer
+from gradle_bodyguard.utils import dependencies_slicer
 
 def test_slicing_empty_list():
 	

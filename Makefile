@@ -6,7 +6,7 @@ install:
 	poetry install
 
 pytests:
-	poetry run pytest
+	poetry run pytest -vv
 
 build:
 	poetry build

@@ -123,3 +123,43 @@ def test_multiple_modules_distinct_ocurrences():
 	assert dependencies == expected_dependencies
 	assert ocurrences == expected_ocurrences
 
+def test_multiple_modules_repeated_ocurrences():
+
+	# Given
+	projects = '''
+	> Task :projects
+
+	Root project 'fake'
+	+--- Project ':app'
+	\\--- Project ':core'
+	'''
+
+	modules = {
+		'dependencies':'',
+		':app:dependencies': '''
+			+--- com.squareup.okhttp3:okhttp:4.5.0 (n)
+			\\--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72 (n)
+		''',
+		':core:dependencies': '''
+			\\--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72 (n)
+		'''
+	}
+
+	runner = FakeGradleRunner(projects, modules)
+
+	# When
+	(dependencies, ocurrences) = find_dependencies(runner)
+
+	# Then
+	expected_dependencies = {
+		'com.squareup.okhttp3:okhttp:4.5.0',
+		'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72'
+	}
+
+	expected_ocurrences = {
+		'com.squareup.okhttp3:okhttp:4.5.0':{':app'},
+		'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72':{':app',':core'}
+	}
+
+	assert dependencies == expected_dependencies
+	assert ocurrences == expected_ocurrences

@@ -5,6 +5,7 @@ CHUNK_SIZE_FOR_COORDINATES=100
 def match(dependencies, fetcher, chunk_size=CHUNK_SIZE_FOR_COORDINATES):
     coordinates = [coordinates_translator.maven_to_ossindex(artefact) for artefact in dependencies]
     chunks = list(chunkify(coordinates, chunk_size))
+
     vulnerabilities = {}
 
     for chunk in chunks:
@@ -20,4 +21,4 @@ def chunkify(items, size):
 		return ([])
 
 	k, m = divmod(len(items), minimum)
-	return (items[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(size))
+	return (items[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(minimum))

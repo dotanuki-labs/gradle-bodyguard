@@ -19,17 +19,9 @@ def parse(argv):
 		'-d',
 		'--destination',
 		action='store',
-		required=True,
+		default='stdout',
 		help='Directory where you want the security report save'
-	)
-	
-	parser.add_argument(
-		'-r',
-		'--report',
-		action='store',
-		default='json',
-		help='Preferred format you want the security report (json | cli)'
 	)
 
 	parsed = parser.parse_args(argv)
-	return [parsed.project, parsed.destination, parsed.report]
+	return [parsed.project, parsed.destination]

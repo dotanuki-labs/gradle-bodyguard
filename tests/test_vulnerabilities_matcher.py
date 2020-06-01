@@ -1,37 +1,37 @@
 from gradle_bodyguard.vulnerabilities_matcher import match_vulnerabilities
 from .fakes import FakeOSSIndexFetcher
 
-# def test_match_empty_dependencies():
+def test_match_empty_dependencies():
 
-# 	# Given
-# 	dependencies = {}
-# 	fetcher = FakeOSSIndexFetcher(dependencies)
+	# Given
+	dependencies = {}
+	fetcher = FakeOSSIndexFetcher(dependencies)
 
-# 	# When
-# 	vulnerabilities = match_vulnerabilities(dependencies, fetcher)
+	# When
+	vulnerabilities = match_vulnerabilities(dependencies, fetcher)
 
-# 	# Then
-# 	assert len(vulnerabilities) == 0
+	# Then
+	assert len(vulnerabilities) == 0
 
-# def test_match_dependencies_when_fit_chunk_size():
+def test_match_dependencies_when_fit_chunk_size():
 
-# 	# Given
-# 	dependencies = {
-# 		'com.squareup.okhttp3:okhttp:3.1.2',
-# 		'com.squareup.retrofit2:retrofit:2.2.0'
-# 	}
+	# Given
+	dependencies = {
+		'com.squareup.okhttp3:okhttp:3.1.2',
+		'com.squareup.retrofit2:retrofit:2.2.0'
+	}
 
-# 	matched = {
-# 		'pkg:maven/com.squareup.okhttp3/okhttp@3.1.2':'CVE-2018-20200'
-# 	}
+	matched = {
+		'pkg:maven/com.squareup.okhttp3/okhttp@3.1.2':'CVE-2018-20200'
+	}
 
-# 	fetcher = FakeOSSIndexFetcher(matched)
+	fetcher = FakeOSSIndexFetcher(matched)
 
-# 	# When
-# 	vulnerabilities = match_vulnerabilities(dependencies, fetcher)
+	# When
+	vulnerabilities = match_vulnerabilities(dependencies, fetcher)
 
-# 	# Then
-# 	assert vulnerabilities == matched
+	# Then
+	assert vulnerabilities == matched
 
 def test_match_dependencies_force_chunk_spliting():
 

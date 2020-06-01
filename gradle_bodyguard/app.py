@@ -13,9 +13,11 @@ from .ossindex_fetcher import OSSIndexFetcher
 import textwrap
 
 def main(argv=None):
-	(project, destination) = cli_parser.parse(argv)
 
 	print(prompt())	
+
+	(project, destination) = cli_parser.parse(argv)
+
 	print("Running with :\n")	
 	print(f"🤖 Project → {project}")
 	print(f"🤖 Destination → {destination}\n")
@@ -26,7 +28,7 @@ def main(argv=None):
 
 	runner = GradleTaskRunner(gradlew)
 
-	print(f"🔥 Starting Gradle project scan ...")
+	print(f"🔥 Start scanning Gradle project ...")
 	
 	(dependencies, ocurrences) = gradle_scanner.scan(runner)
 
@@ -37,7 +39,8 @@ def main(argv=None):
 	print(f"🔥 Generating security report ... ")
 	report = report_generator.generate(vulnerabilities, ocurrences)
 	security_reporter.deliver(report, destination)
-	print(f"\n🔥 Done\n")
+	
+	print(f"\n🤖 Done\n")
 
 def prompt():
 	logo='''

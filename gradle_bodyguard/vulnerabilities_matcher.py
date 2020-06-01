@@ -2,7 +2,7 @@ from . import package_coordinates
 
 CHUNK_SIZE_FOR_COORDINATES=100
 
-def match_vulnerabilities(dependencies, fetcher, chunk_size=CHUNK_SIZE_FOR_COORDINATES):
+def match(dependencies, fetcher, chunk_size=CHUNK_SIZE_FOR_COORDINATES):
     coordinates = [package_coordinates.maven_to_ossindex(artefact) for artefact in dependencies]
     chunks = list(chunkify(coordinates, chunk_size))
     vulnerabilities = {}

@@ -10,3 +10,12 @@ class FakeGradleRunner:
 			return self.projects
 
 		return self.dependencies[task]
+
+class FakeOSSIndexFetcher:
+	def __init__(self, found):
+		self.found = found
+
+	def fetch(self, coordinates):
+		return self.found
+
+		

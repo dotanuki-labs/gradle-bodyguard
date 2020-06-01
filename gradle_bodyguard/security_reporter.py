@@ -5,7 +5,6 @@ from .utils.cli_colorizer import cyan
 from .utils.cli_colorizer import red
 
 import json
-import pprint
 
 def deliver(report, destination):
 	if not report['has_issues']:
@@ -24,4 +23,8 @@ def plain_text(report):
 		print(f"Learn more about the vulnerability → {blue(issue['learn_more'])}")
 	
 def write_json(destination, report):
-	print(f"\n Wrote json report at → {destination}")
+	with open(f"{destination}/gradle-bodyguard-report.json", "w") as writer:
+		writer.write(json.dumps(report, indent=2, sort_keys=True))
+		writer.close()
+
+	print(f"📌 JSON report written at → {destination}/gradle-bodyguard-report.json")

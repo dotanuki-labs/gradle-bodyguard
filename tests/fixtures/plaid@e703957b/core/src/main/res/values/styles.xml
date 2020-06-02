@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~   Copyright 2018 Google LLC
+  ~
+  ~   Licensed under the Apache License, Version 2.0 (the "License");
+  ~   you may not use this file except in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~   Unless required by applicable law or agreed to in writing, software
+  ~   distributed under the License is distributed on an "AS IS" BASIS,
+  ~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~   See the License for the specific language governing permissions and
+  ~   limitations under the License.
+  ~
+  -->
+
+<resources>
+
+    <style name="Plaid" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#69f0ae</item>
+        <item name="colorPrimaryVariant">#2bbd7e</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#69f0ae</item>
+        <item name="colorSecondaryVariant">#2bbd7e</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">#ffffff</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="android:navigationBarColor">@color/background_super_dark</item>
+        <item name="android:statusBarColor">@color/background_super_dark</item>
+        <item name="android:textColorHint">@color/hint_disabled_dark</item>
+        <item name="android:textColorTertiary">@color/text_color_tertiary</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
+        <item name="collapsingTitleLayoutStyle">@style/Widget.Plaid.CollapsingTitle</item>
+        <item name="android:colorEdgeEffect">@color/mid_grey</item>
+    </style>
+
+    <style name="PlaidDarkOverlay" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <!-- Used to theme dark elements in light themed screens.
+             Extend the material dark Action Bar overlay as this contains text styling. -->
+    </style>
+
+    <style name="Plaid.Home">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/immersive_bars</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:windowEnterTransition">@transition/home_enter</item>
+        <item name="shotLoadingPlaceholderColors">@array/loading_placeholders_dark</item>
+        <item name="initialBadgeColor">@color/gif_badge_dark_image</item>
+    </style>
+
+    <style name="Plaid.Translucent">
+        <!-- using a semi-transparent window background for the drag-back gesture -->
+        <item name="android:windowBackground">@color/scrim</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <!-- Placeholders. Implementations in feature modules. -->
+    <style name="Plaid.Translucent.About" />
+    <style name="Plaid.DesignerNews" parent="@style/Plaid.Translucent" />
+    <style name="Plaid.DesignerNews.Login" />
+    <style name="Plaid.DesignerNews.Story" />
+    <style name="Plaid.Translucent.Dribbble" />
+    <style name="Plaid.Translucent.Dribbble.Shot" />
+    <style name="Plaid.Translucent.Search" />
+
+    <style name="TextAppearance" />
+
+    <style name="TextAppearance.DialogContent" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="lineHeightHint">24sp</item>
+    </style>
+
+    <style name="TextAppearance.EmptyText" parent="@style/TextAppearance.DialogContent">
+        <item name="android:textColor">@color/text_primary_light</item>
+        <item name="lineHeightHint">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Filter" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.TilePrimary" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_mono</item>
+        <item name="lineHeightHint">20sp</item>
+    </style>
+
+    <style name="TextAppearance.TileSecondary" parent="@style/TextAppearance.MaterialComponents.Body2">
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ToolbarTitle" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFamily">@font/roboto_mono</item>
+    </style>
+
+    <style name="Widget.Plaid" parent="android:Widget" />
+
+    <style name="Widget.Plaid.CollapsingTitle">
+        <item name="android:textAppearance">@style/TextAppearance.ToolbarTitle</item>
+        <item name="lineHeightHint">28sp</item>
+        <item name="maxExpandedTextSize">@dimen/display_4_text_size</item>
+        <item name="titleInsetStart">@dimen/keyline_1</item>
+        <item name="titleInsetTop">@dimen/padding_normal</item>
+        <item name="titleInsetEnd">@dimen/padding_normal</item>
+        <item name="titleInsetBottom">@dimen/padding_normal</item>
+        <item name="android:maxLines">5</item>
+    </style>
+
+    <style name="ThemeOverlay.Plaid" parent="" />
+
+    <!-- This won't be needed when we move creation of DN items into the dn module and
+         can set the correct theme -->
+    <style name="ThemeOverlay.Plaid.DesignerNews" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorOnPrimary">#ffffff</item>
+    </style>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2015 Google LLC.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<resources>
+
+    <!-- dribbble -->
+    <color name="dribbble">#fff06292</color> <!-- pink 300 -->
+    <color name="dribbble_dark">#ec407a</color> <!-- pink 400 -->
+    <color name="dribbble_super_dark">#ff33292d</color>
+    <color name="dribbble_link_highlight">#b3f06292</color>
+    <color name="fab_heart_empty">@color/text_primary_light</color>
+    <color name="fab_heart_progress_bar">#deffffff</color> <!-- 87% white-->
+    <color name="fab_heart_full">#ffffffff</color>
+
+    <array name="loading_placeholders_light">
+        <item>#fff5f5f5</item>
+        <item>#ffeeeeee</item>
+        <item>#ffe0e0e0</item>
+    </array>
+
+    <!-- search -->
+    <color name="search_background_scrim">#33000000</color>
+
+</resources>

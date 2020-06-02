@@ -6,17 +6,12 @@ import os
 # Note : using tmpdir fixture from pytest
 # https://docs.pytest.org/en/latest/tmpdir.html
 
+FIXTURES_DIR=f"{os.getcwd()}/tests/fixtures"
+
 def test_integration_against_rxjava(tmpdir):
 
-	# Given
-	clone_url = 'git@github.com:ReactiveX/RxJava.git'
-	revision = 'd3dd133c3fe30610c3f4fa878de8285bf95177de'
-
-	os.chdir(tmpdir)
-	os.system(f"git clone {clone_url}")
-	os.system(f"git checkout {revision}")
-
-	argv = ['-p', f"{tmpdir}/RxJava", '-d', f"{tmpdir}"]
+	target = f"{FIXTURES_DIR}/rxjava@d3dd133c"
+	argv = ['-p', target, '-d', f"{tmpdir}"]
 
 	# When 
 	app.main(argv)
@@ -42,38 +37,23 @@ def test_integration_against_rxjava(tmpdir):
 def test_integration_against_play_services_plugin(tmpdir):
 
 	# Given
-	clone_url = 'git@github.com:google/play-services-plugins.git'
-	revision = '1baeac2ab76fd6c734c9d9ef545c405e85d6e262'
-
-	os.chdir(tmpdir)
-	os.system(f"git clone {clone_url}")
-	os.system(f"git checkout {revision}")
-
-	workdir = f"{tmpdir}/play-services-plugins/google-services-plugin"
-	reportdir = f"{tmpdir}/play-services-plugins"
-	
-	argv = ['-p', workdir, '-d', reportdir]
+	target = f"{FIXTURES_DIR}/gms-plugins@1baeac2a/google-services-plugin"
+	argv = ['-p', target, '-d', f"{tmpdir}"]
 
 	# When 
 	app.main(argv)
 
 	# Then
 	# No file is written when no CVEs found
-	absent = f"{reportdir}/gradle-bodyguard-report.json"
+	absent = f"{tmpdir}/gradle-bodyguard-report.json"
 	assert not os.path.exists(absent)
 
 def test_integration_against_plaid(tmpdir):
 
 	# Given
-	clone_url = 'git@github.com:android/plaid.git'
-	revision = 'e703957b5e5d4728dea94f11f8d0d27d227f9725'
-
-	os.chdir(tmpdir)
-	os.system(f"git clone {clone_url}")
-	os.system(f"git checkout {revision}")
-
+	target = f"{FIXTURES_DIR}/plaid@e703957b"
 	ignored_cves = 'CVE-2018-10237,CVE-2018-1324,CVE-2017-13098'
-	argv = ['-p', f"{tmpdir}/plaid", '-d', f"{tmpdir}", '-i', ignored_cves]
+	argv = ['-p', target, '-d', f"{tmpdir}", '-i', ignored_cves]
 
 	# When 
 	app.main(argv)

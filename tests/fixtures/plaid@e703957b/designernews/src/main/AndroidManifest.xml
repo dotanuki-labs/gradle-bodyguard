@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2015 Google LLC.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="io.plaidapp.designernews">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <dist:module
+        dist:onDemand="false"
+        dist:title="@string/feature_name_designernews">
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:extractNativeLibs="false"
+        android:appCategory="image"
+        android:theme="@style/Plaid"
+        android:name="io.plaidapp.ui.PlaidApplication">
+
+        <activity
+            android:name="io.plaidapp.designernews.ui.story.StoryActivity"
+            android:parentActivityName="io.plaidapp.ui.HomeActivity"
+            android:theme="@style/Plaid.DesignerNews.Story">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="io.plaidapp.designernews.ui.login.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Plaid.DesignerNews.Login"
+            android:windowSoftInputMode="adjustResize" />
+
+        <service
+            android:name="io.plaidapp.core.designernews.data.votes.UpvoteStoryService"
+            android:exported="false" />
+    </application>
+
+</manifest>

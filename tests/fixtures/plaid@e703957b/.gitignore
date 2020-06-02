@@ -1,0 +1,12 @@
+build
+*.iml
+*.project
+*.buildship.core.prefs
+out
+.idea
+prebuilts
+.DS_Store
+local.properties
+.gradle
+ktlint
+google-services.json

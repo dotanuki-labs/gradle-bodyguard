@@ -45,8 +45,8 @@ def main(argv=None):
 	print(f"\n🤖 Done\n")
 	
 	# Break CI pipeline if needed
-	if force_exit:
-		sys.exit(1) 
+	if force_exit and report['has_issues']:
+		sys.exit(1)
 
 def prompt():
 	logo='''

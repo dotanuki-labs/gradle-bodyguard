@@ -31,5 +31,14 @@ def parse(argv):
 		help='CVEs to ignore (separed with commas)'
 	)
 
+	parser.add_argument(
+		'-f',
+		'--force_exit',
+		action='store',
+		default=False,
+		help='Force program to exit with failure when vulnerabilities were found'
+	)
+	
 	parsed = parser.parse_args(argv)
-	return [parsed.project, parsed.destination, parsed.ignore.split(',')]
+	ignored = [] if parsed.ignore == '' else parsed.ignore.split(',')
+	return [parsed.project, parsed.destination, ignored, parsed.force_exit]

@@ -12,4 +12,4 @@ build:
 	poetry build
 
 run:
-	poetry run main -p $(project) -d $(destination)
+	poetry run main -p $(project) -d $(destination) -f true

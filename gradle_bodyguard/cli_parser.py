@@ -23,5 +23,13 @@ def parse(argv):
 		help='Directory where you want the security report save'
 	)
 
+	parser.add_argument(
+		'-i',
+		'--ignore',
+		action='store',
+		default='',
+		help='CVEs to ignore (separed with commas)'
+	)
+
 	parsed = parser.parse_args(argv)
-	return [parsed.project, parsed.destination]
+	return [parsed.project, parsed.destination, parsed.ignore.split(',')]

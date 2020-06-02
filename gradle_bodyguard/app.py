@@ -16,12 +16,13 @@ def main(argv=None):
 
 	print(prompt())	
 
-	(project, destination) = cli_parser.parse(argv)
+	(project, destination, ignore) = cli_parser.parse(argv)
 
 	print("Running with :\n")	
 	print(f"🤖 Project → {project}")
-	print(f"🤖 Destination → {destination}\n")
-	
+	print(f"🤖 Destination → {destination}")
+	print(f"🤖 Ignoring → {ignore}\n")
+
 	gradlew = gradlew_locator.locate(project)
 
 	print(f"🔥 Gradlew found at → {gradlew}")
@@ -37,7 +38,7 @@ def main(argv=None):
 	vulnerabilities = vulnerabilities_matcher.match(dependencies, OSSIndexFetcher())
 
 	print(f"🔥 Generating security report ... ")
-	report = report_generator.generate(vulnerabilities, ocurrences)
+	report = report_generator.generate(vulnerabilities, ocurrences, ignore)
 	security_reporter.deliver(report, destination)
 	
 	print(f"\n🤖 Done\n")

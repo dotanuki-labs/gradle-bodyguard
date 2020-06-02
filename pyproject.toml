@@ -1,19 +1,29 @@
 [tool.poetry]
 name = "gradle-bodyguard"
-version = "0.1.0"
-description = ""
+version = "0.0.1"
+description = "A tool that scans dependencies in your Gradle project and warns you about potential security issues"
 authors = ["Ubiratan Soares <ubiratan.f.soares@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/dotanuki-labs/gradle-bodyguard"
+repository = "https://github.com/dotanuki-labs/gradle-bodyguard"
+keywords = ["gradle", "cves", "ossindex"]
+include = [ "LICENSE.md" ]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 requests = "^2.23.0"
-pytest-httpserver = "^0.3.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+pytest-httpserver = "^0.3.4"
 
 [tool.poetry.scripts]
-main = "gradle_bodyguard:main"
+gradle-bodyguard = "gradle_bodyguard:main"
 
 [build-system]
 requires = ["poetry>=0.12"]

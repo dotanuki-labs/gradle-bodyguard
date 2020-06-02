@@ -15,7 +15,8 @@ class OSSIndexFetcher:
 		if response.status_code == requests.codes.ok:	
 			for item in response.json():
 				for vulnerability in item['vulnerabilities']:
-					founded[item['coordinates']] = vulnerability['cve']
+					if 'cve' in vulnerability: # For reason is missing in some cases ...
+						founded[item['coordinates']] = vulnerability['cve']
 		else :
 			self.report_http_error(response)
 		

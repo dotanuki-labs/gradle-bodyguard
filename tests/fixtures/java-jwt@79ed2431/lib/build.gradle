@@ -1,0 +1,58 @@
+plugins {
+    id "com.jfrog.bintray" version "1.8.4"
+    id "com.auth0.gradle.oss-library.java" version "0.11.0"
+    id "jacoco"
+}
+
+logger.lifecycle("Using version ${version} for ${group}.${name}")
+
+oss {
+    name "java jwt"
+    repository "java-jwt"
+    organization "auth0"
+    description "Java implementation of JSON Web Token (JWT)"
+
+    developers {
+        auth0 {
+            displayName = "Auth0"
+            email = "oss@auth0.com"
+        }
+        lbalmaceda {
+            displayName = "Luciano Balmaceda"
+            email = "luciano.balmaceda@auth0.com"
+        }
+        hzalaz {
+            displayName = "Hernan Zalazar"
+            email = "hernan@auth0.com"
+        }
+    }
+}
+
+compileJava {
+    sourceCompatibility '1.7'
+    targetCompatibility '1.7'
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.3'
+    implementation 'commons-codec:commons-codec:1.14'
+    testImplementation 'org.bouncycastle:bcprov-jdk15on:1.60'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'net.jodah:concurrentunit:0.4.3'
+    testImplementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+    testImplementation 'org.mockito:mockito-core:2.18.3'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events "skipped", "failed", "standardError"
+        exceptionFormat "short"
+    }
+}

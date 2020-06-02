@@ -7,37 +7,11 @@ import os
 # https://docs.pytest.org/en/latest/tmpdir.html
 
 FIXTURES_DIR=f"{os.getcwd()}/tests/fixtures"
-
-def test_integration_against_rxjava(tmpdir):
-
-	target = f"{FIXTURES_DIR}/rxjava@d3dd133c"
-	argv = ['-p', target, '-d', f"{tmpdir}"]
-
-	# When 
-	app.main(argv)
-
-	# Then
-	expected = {
-		'has_issues': True,
- 		'issues': [
-			{
-				'cve': 'CVE-2019-10782',
-				'dependency': 'com.puppycrawl.tools:checkstyle:8.26',
-				'learn_more': 'https://nvd.nist.gov/vuln/detail/CVE-2019-10782',
-				'usage_samples': ':'
-			}
-		]
-	}
 	
-	written = open(f"{tmpdir}/gradle-bodyguard-report.json")
-	reported = json.load(written)
-	assert expected == reported
-
-	
-def test_integration_against_play_services_plugin(tmpdir):
+def test_integration_against_javajwt(tmpdir):
 
 	# Given
-	target = f"{FIXTURES_DIR}/gms-plugins@1baeac2a/google-services-plugin"
+	target = f"{FIXTURES_DIR}/java-jwt@79ed2431"
 	argv = ['-p', target, '-d', f"{tmpdir}"]
 
 	# When 

@@ -1,9 +1,10 @@
 # cli_parser.py
 
 import argparse
+import sys
 
 
-def parse(argv):
+def parse(args):
     parser = argparse.ArgumentParser(
         prog='Gradle Bodyguard',
         description='Scans a Gradle project and warns about potential security issues'
@@ -41,6 +42,10 @@ def parse(argv):
         help='Force program to exit with failure when issues were found'
     )
 
-    parsed = parser.parse_args(argv)
-    ignored = [] if parsed.ignore == '' else parsed.ignore.split(',')
-    return [parsed.project, parsed.destination, ignored, parsed.force_exit]
+    try:
+        parsed = parser.parse_args(args)
+        ignored = [] if parsed.ignore == '' else parsed.ignore.split(',')
+        return [parsed.project, parsed.destination, ignored, parsed.force_exit]
+    except:
+        parser.print_help()
+        sys.exit(0)

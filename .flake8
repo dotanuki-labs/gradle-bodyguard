@@ -1,5 +1,5 @@
 
 [flake8]
 max-line-length: 100
-ignore: E501, E231
+ignore: E501, E231, E722
 exclude: .yml, .md

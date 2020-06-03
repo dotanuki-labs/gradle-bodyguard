@@ -9,13 +9,14 @@ from . import vulnerabilities_matcher
 
 from .gradle_runner import GradleTaskRunner
 from .ossindex_fetcher import OSSIndexFetcher
+from .utils.cli_colorizer import cyan
 
 import sys
 
 
 def main(argv=None):
 
-    print("\nGradle Bodyguard (version 0.0.1)\n")
+    print(f"\n\n{cyan('GradleBodyguard (version 0.0.1)')}\n")
 
     (project, destination, ignore, force_exit) = cli_parser.parse(argv)
 

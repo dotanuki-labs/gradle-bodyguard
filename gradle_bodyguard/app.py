@@ -27,7 +27,7 @@ def main(argv=None):
 
     gradlew = gradlew_locator.locate(project)
 
-    print("🔥 Gradlew found at → {gradlew}")
+    print(f"🔥 Gradlew found at → {gradlew}")
 
     runner = GradleTaskRunner(gradlew)
 

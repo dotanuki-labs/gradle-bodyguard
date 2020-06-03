@@ -9,7 +9,7 @@ install:
 	poetry install
 
 checkstyle:
-	poetry run flake8 gradle_bodyguard tests
+	flake8 gradle_bodyguard tests
 
 pytests:
 	poetry run pytest -vv

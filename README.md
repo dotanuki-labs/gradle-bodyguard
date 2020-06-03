@@ -1,33 +1,33 @@
 # Gradle Bodyguard
 
-<!--![](.github/assets/showcase.gif)
--->
+![](.github/assets/showcase.gif)
+
 ## What is this?
 
 > *Complete blog post to come. Stay tunned!*
 
-[Supply chain attacks](https://arstechnica.com/information-technology/2020/04/725-bitcoin-stealing-apps-snuck-into-ruby-repository/) are a reality and the JVM ecosystem is not imune. 
+[Supply chain attacks](https://arstechnica.com/information-technology/2020/04/725-bitcoin-stealing-apps-snuck-into-ruby-repository/) are a reality and the JVM ecosystem is not imune.
 
-There are several tools out there that help developers from JVM-based languages to counter measure against supply chain attacks - like [Dependabot](https://dependabot.com/), [Synk](https://snyk.io/), [DependencyCheck](https://github.com/jeremylong/DependencyCheck) - and others. But when talking particularly about Gradle project things start to become a little more tricky, because (but only) :
+There are several tools out there that help developers from JVM-based languages to protect against supply chain attacks - like [Dependabot](https://dependabot.com/), [Snyk](https://snyk.io/), [DependencyCheck](https://github.com/jeremylong/DependencyCheck) - and others. But when talking particularly about Gradle projects things start to become a little more tricky, because (but only) :
 
-- We are instered not only in the dependencies that our project declares, but also in the transitive ones (actually, transitive dependencies are the main attack vector here);
+- We are insterestedd not only in the dependencies that our project declares, but also in the transitive ones (actually, transitive dependencies are the main attack vector here);
 
-- Is quite common that Gradle projects - specially multi-module ones - manage dependencies either with [Project extension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html) API or with [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources). In the two cases, tools like Dependabot - which parses your Gradle files in order to figure out dependencies - get confused or eventually don't find the dependencies;
+- Is quite common that Gradle projects - specially multi-module ones - manage dependencies either with [Project extension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html) API or with [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources). In these two cases, tools like Dependabot - which parses your Gradle files in order to figure out dependencies - get confused or eventually don't find the dependencies;
 
 - Gradle plugins for such type of tools eventually are available, but this means another plugin in your Gradle build;
 
 - OWASP DependencyCheck is quite trick to be used in Android projects.
 
 
-`gradle-bodyguard` was born to tackle these issues. Written in Python and running as a CLI tool, it requires no additional plugins in your project and exercises your Gradle build - either root project only or multi-module one, regarless dependencies managed with `buildSrc` - and learns about the dependencies that **Gradle already knows about your project**, even the transitive ones. 
+`gradle-bodyguard` was born to tackle these issues. Written in Python and running as a CLI tool, it requires no additional plugins in your project and exercises your Gradle build - regardless your project layout - and learns about the dependencies that **Gradle already knows**, even the transitive ones.
 
-`gradle-bodyguard` match these artifacts against [OSS Index](https://ossindex.sonatype.org/) and outputs the results for you. In this way, you can learn (and automate around) when some dependency introduces a new disclosed [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures) in your build, particularly at CI level.
+`gradle-bodyguard` then matches these artifacts against [OSS Index](https://ossindex.sonatype.org/) and outputs the results for you. In this way, you can learn (and automate around) when some dependency introduces a new disclosed [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures) in your build, particularly at CI level.
 
 Because OSSIndex is free to use, this tool is free of charge as well. 😎
 
 ## Setup
 
-Install with [pip](https://www.w3schools.com/python/python_pip.asp). Requires Python 3.8.+ or newer installed in your machine.
+Install with [pip](https://www.w3schools.com/python/python_pip.asp). Requires Python 3.8.+ or newer.
 
 ```bash
 → pip install gradle-bodyguard
@@ -71,7 +71,7 @@ Coming soon 🔥
 
 As mentioned previously, `gradle-bodyguard` is backed by the amazing [OSS Index](https://ossindex.sonatype.org/), offered by [Sonatype](https://ossindex.sonatype.org/). If you were not aware of this product until now, you should have a look.
 
-One limitation that `gradle-bodyguard` has is the following : this tool does not require your OSS Index `API TOKEN` for [authenticated REST API calls](https://ossindex.sonatype.org/doc/rest); **bodyguard** avoids that by batching the dependencies computed in the Gradle project and querying 125 Maven coordinates per HTTP request - since this option is [available at all](https://ossindex.sonatype.org/rest#/Component%20vulnerability%20reports/post). 
+One limitation that `gradle-bodyguard` has is the following : this tool does not require your OSS Index `API TOKEN` for [authenticated REST API calls](https://ossindex.sonatype.org/doc/rest); **bodyguard** avoids that by batching the dependencies computed in the Gradle project and querying 125 Maven coordinates per HTTP request - since this option is [available at all](https://ossindex.sonatype.org/rest#/Component%20vulnerability%20reports/post).
 
 This should work fine for most of small/medium projects out there(up to 500 dependencies including the transitive ones), and therefore the usage of the tool is a bit simpler as well.
 
@@ -80,7 +80,7 @@ If your project consumes way more dependencies than aforementioned and you start
 
 ## Credits
 
-I'd like to thank in special : 
+I'd like to thank in special :
 
 - [Python Poetry](https://python-poetry.org/) because it allowed a newcomer in the Python ecosystem to build and ship his first package on Pypi with an amazing developer experience
 - [Sonatype](https://ossindex.sonatype.org/) for providing OSSIndex (and its companion REST API) for free to the open-source community

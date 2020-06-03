@@ -1,7 +1,7 @@
 from . import coordinates_translator
 from .utils import dependencies_slicer
 
-CHUNK_SIZE_FOR_COORDINATES = 100
+CHUNK_SIZE_FOR_COORDINATES = 125
 
 
 def match(dependencies, fetcher, chunk_size=CHUNK_SIZE_FOR_COORDINATES):

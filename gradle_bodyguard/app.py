@@ -16,7 +16,7 @@ import sys
 
 def main(argv=None):
 
-    print(f"\n\n{cyan('GradleBodyguard (version 0.0.1)')}\n")
+    print(f"\n\n{cyan('GradleBodyguard (version 0.0.2)')}\n")
 
     (project, destination, ignore, force_exit) = cli_parser.parse(argv)
 

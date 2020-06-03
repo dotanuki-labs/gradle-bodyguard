@@ -22,7 +22,7 @@ jobs:
         run: make install
 
       - name: Check codestyle
-        run: make codestyle
+        run: make checkstyle
 
       - name: Run tests
         run: make pytests

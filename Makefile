@@ -14,8 +14,11 @@ checkstyle:
 pytests:
 	poetry run pytest -vv
 
+help:
+	poetry run gradle-bodyguard
+
 run:
-	poetry run main -p $(project)
+	poetry run gradle-bodyguard -p $(project)
 
 config_pypi_token:
 	poetry config pypi-token.pypi $(token)

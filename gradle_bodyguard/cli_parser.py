@@ -3,6 +3,8 @@
 import argparse
 import sys
 
+from .utils.cli_colorizer import blue
+
 
 def parse(args):
     parser = argparse.ArgumentParser(
@@ -47,5 +49,5 @@ def parse(args):
         ignored = [] if parsed.ignore == '' else parsed.ignore.split(',')
         return [parsed.project, parsed.destination, ignored, parsed.force_exit]
     except:
-        parser.print_help()
+        print(f"\nLearn more about with {blue('gradle-bodyguard --help')}")
         sys.exit(0)

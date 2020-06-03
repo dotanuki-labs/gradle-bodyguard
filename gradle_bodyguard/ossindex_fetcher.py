@@ -26,4 +26,3 @@ class OSSIndexFetcher:
     def report_http_error(self, response):
         print('Error when fetching from OSS Index')
         print(f"Http Status -> {response.status_code}")
-        print(f"Http Body -> {response.json()}")

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gradle-bodyguard"
-version = "0.0.2"
+version = "0.0.3"
 description = "A tool that scans dependencies in your Gradle project and warns you about potential security issues"
 authors = ["Ubiratan Soares <ubiratan.f.soares@gmail.com>"]
 license = "MIT"

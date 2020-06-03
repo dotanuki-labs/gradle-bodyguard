@@ -8,6 +8,9 @@ clean:
 install:
 	poetry install
 
+checkstyle:
+	poetry run flake8
+
 pytests:
 	poetry run pytest -vv
 

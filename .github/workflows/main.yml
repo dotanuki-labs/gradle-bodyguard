@@ -21,5 +21,8 @@ jobs:
       - name: Install dependencies
         run: make install
 
+      - name: Check codestyle
+        run: make codestyle
+
       - name: Run tests
         run: make pytests

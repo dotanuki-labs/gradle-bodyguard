@@ -35,7 +35,7 @@ def main(argv=None):
 
     (dependencies, ocurrences) = gradle_scanner.scan(runner)
 
-    print("🔥 Total number of dependencies found → {len(dependencies)}")
+    print(f"🔥 Total number of dependencies found → {len(dependencies)}")
     print("🔥 Matching against OSS Index ... ")
     fetcher = OSSIndexFetcher()
     vulnerabilities = vulnerabilities_matcher.match(dependencies, fetcher)

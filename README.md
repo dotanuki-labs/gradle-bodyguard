@@ -6,11 +6,13 @@
 
 > *Complete blog post to come. Stay tunned!*
 
-[Supply chain attacks](https://arstechnica.com/information-technology/2020/04/725-bitcoin-stealing-apps-snuck-into-ruby-repository/) are a reality and the JVM ecosystem is not imune.
+[Supply chain attacks](https://arstechnica.com/information-technology/2020/04/725-bitcoin-stealing-apps-snuck-into-ruby-repository/) are a reality and the JVM ecosystem is not safe.
 
-There are several tools out there that help developers from JVM-based languages to protect against supply chain attacks - like [Dependabot](https://dependabot.com/), [Snyk](https://snyk.io/), [DependencyCheck](https://github.com/jeremylong/DependencyCheck) - and others. But when talking particularly about Gradle projects things start to become a little more tricky, because (but only) :
+There are several tools out there that help developers from JVM-based languages to protect against supply chain attacks - like [Dependabot](https://dependabot.com/), [Snyk](https://snyk.io/), [DependencyCheck](https://github.com/jeremylong/DependencyCheck) - and others.
 
-- We are insterestedd not only in the dependencies that our project declares, but also in the transitive ones (actually, transitive dependencies are the main attack vector here);
+However, when talking particularly about Gradle projects things start to become a little more tricky, because (but not only) :
+
+- We are insterested not only in the dependencies that our project declares, but also in the transitive ones (actually, transitive dependencies are the main attack vector here);
 
 - Is quite common that Gradle projects - specially multi-module ones - manage dependencies either with [Project extension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html) API or with [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources). In these two cases, tools like Dependabot - which parses your Gradle files in order to figure out dependencies - get confused or eventually don't find the dependencies;
 
@@ -23,7 +25,7 @@ There are several tools out there that help developers from JVM-based languages 
 
 `gradle-bodyguard` then matches these artifacts against [OSS Index](https://ossindex.sonatype.org/) and outputs the results for you. In this way, you can learn (and automate around) when some dependency introduces a new disclosed [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures) in your build, particularly at CI level.
 
-Because OSSIndex is free to use, this tool is free of charge as well. 😎
+Because OSSIndex is free to use, this tool was possible to be made. 😎
 
 ## Setup
 

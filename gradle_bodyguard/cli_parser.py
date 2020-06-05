@@ -37,6 +37,14 @@ def parse(args):
     )
 
     parser.add_argument(
+        '-t',
+        '--token',
+        action='store',
+        default='',
+        help='API token for OSS Index'
+    )
+
+    parser.add_argument(
         '-f',
         '--force_exit',
         action='store',
@@ -55,7 +63,14 @@ def parse(args):
     try:
         parsed = parser.parse_args(args)
         ignored = [] if parsed.ignore == '' else parsed.ignore.split(',')
-        return [parsed.project, parsed.destination, ignored, parsed.force_exit, parsed.verbose]
+        return [
+            parsed.project,
+            parsed.destination,
+            ignored,
+            parsed.token,
+            parsed.force_exit,
+            parsed.verbose
+        ]
     except:
         print(f"\nLearn more about with {blue('gradle-bodyguard --help')}")
         sys.exit(0)

@@ -1,17 +1,25 @@
 import requests
 
+from . import constants
+
+
 OSS_INDEX_URL = 'https://ossindex.sonatype.org/api/v3/component-report'
 DEFAULT_SECONDS_TO_TIMEOUT = 10
 
 
 class OSSIndexFetcher:
-    def __init__(self, url=OSS_INDEX_URL, timeout=DEFAULT_SECONDS_TO_TIMEOUT):
+    def __init__(self, api_token, url=OSS_INDEX_URL, timeout=DEFAULT_SECONDS_TO_TIMEOUT):
+        self.api_token = api_token
         self.url = url
 
     def fetch(self, coordinates):
         founded = {}
+        extra_headers = {'user-agent': f"x-gradle-bodyguard/{constants.APP_VERSION}"}
 
-        response = requests.post(self.url, json={'coordinates': coordinates})
+        if self.api_token:
+            extra_headers['authorization'] = f"Basic {self.api_token}"
+
+        response = requests.post(self.url, json={'coordinates': coordinates}, headers=extra_headers)
 
         if response.status_code == requests.codes.ok:
             for item in response.json():
@@ -25,4 +33,4 @@ class OSSIndexFetcher:
 
     def report_http_error(self, response):
         print('Error when fetching from OSS Index')
-        print(f"Http Status -> {response.status_code}")
+        print(f"{response.text}")

@@ -1,6 +1,7 @@
 # app.py
 
 from . import cli_parser
+from . import constants
 from . import gradlew_locator
 from . import gradle_scanner
 from . import report_generator
@@ -17,9 +18,10 @@ import sys
 
 def main(argv=None):
 
-    print(f"\n\n{cyan('GradleBodyguard (version 0.0.3)')}\n")
+    logo = f"GradleBodyguard(version {constants.APP_VERSION})"
+    print(f"\n\n{cyan(logo)}\n")
 
-    (project, destination, ignore, force_exit, verbose) = cli_parser.parse(argv)
+    (project, destination, ignore, api_token, force_exit, verbose) = cli_parser.parse(argv)
 
     logger = Logger(verbose)
 
@@ -40,13 +42,13 @@ def main(argv=None):
 
     logger.log(f"🔥 Total number of dependencies found → {len(dependencies)}")
     logger.log("🔥 Matching against OSS Index ... ")
-    fetcher = OSSIndexFetcher()
+    fetcher = OSSIndexFetcher(api_token)
     vulnerabilities = vulnerabilities_matcher.match(dependencies, fetcher)
 
     logger.log("🔥 Generating security report ... ")
     report = report_generator.generate(vulnerabilities, ocurrences, ignore)
     security_reporter.deliver(report, destination)
-    print.log("\n🤖 Done\n")
+    print("\n🤖 Done\n")
 
     # Break CI pipeline if needed
 

@@ -1,5 +1,5 @@
-__version__ = '0.0.3'
 
+from .constants import __version__
 from . import app
 
 

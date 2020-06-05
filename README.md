@@ -31,7 +31,7 @@ Because OSSIndex is free to use, this tool was possible to be made. 😎
 
 Install with [pip](https://www.w3schools.com/python/python_pip.asp). Requires Python 3.8.+ or newer.
 
-```bash
+```
 → pip install gradle-bodyguard
 ```
 
@@ -39,7 +39,7 @@ Install with [pip](https://www.w3schools.com/python/python_pip.asp). Requires Py
 
 The most basic usage takes only a path to the target Gradle project you want to examine:
 
-```bash
+```
 → gradle-bodyguard -p <path-to-gradle-project>
 ```
 
@@ -47,7 +47,7 @@ You should see results in your terminal screen 🔥
 
 You also can have a `json` version of the security report. This file is only generated when the tool find potential vulnerabilities :
 
-```bash
+```
 → gradle-bodyguard -p <path-to-gradle-project> -d <path-to-folder>
 ```
 
@@ -55,13 +55,13 @@ The `gradle-bodyguard-report.json` file will be stored at `folder`
 
 If you realise that some CVEs actually don't impact your project at all, you can just ignore them and exclude such CVEs from the results
 
-```bash
+```
 → gradle-bodyguard -p <path-to-gradle-project> -i <CVE-ID>,<CVE-ID>,<CVE-ID>
 ```
 
 See usage for a full list of options
 
-```bash
+```
 → gradle-bodyguard --help
 ```
 
@@ -77,7 +77,17 @@ One limitation that `gradle-bodyguard` has is the following : this tool does not
 
 This should work fine for most of small/medium projects out there(up to 500 dependencies including the transitive ones), and therefore the usage of the tool is a bit simpler as well.
 
-If your project consumes way more dependencies than aforementioned and you started to see `429s` in logs when using `gradle-bodyguard`, fill an issue with a feature request, I'll be happy to implement that.
+If your project consumes way more dependencies than aforementioned and you started to see `429s` in logs, you must then provide your API_TOKEN
+
+```
+→ gradle-bodyguard --project my-project --token my-ossindex-api-token
+```
+
+## Practical Experiment using Android open-source apps
+
+Do you want to learn how `gradle-bodyguard` can help you to fight back against supply-chain attacks?
+
+Please, [checkout this experiment](https://github.com/dotanuki-labs/android-oss-cves-research) and bring me your feedback!
 
 
 ## Credits

@@ -3,10 +3,10 @@
 import re
 
 
-def scan(gradle_runner):
+def scan(gradle_runner, logger):
     modules = compute_gradle_modules(gradle_runner)
-    print(f"🔥 Total number of Gradle modules → {len(modules)}")
-    return evaluate_dependencies(gradle_runner, modules)
+    logger.log(f"🔥 Total number of Gradle modules → {len(modules)}")
+    return evaluate_dependencies(gradle_runner, modules, logger)
 
 
 def compute_gradle_modules(gradle_runner):
@@ -17,12 +17,12 @@ def compute_gradle_modules(gradle_runner):
     return modules
 
 
-def evaluate_dependencies(gradle_runner, modules):
+def evaluate_dependencies(gradle_runner, modules, logger):
     ocurrences = {}
     dependencies = set()
 
     for module in modules:
-        print(f"🔥 Evaluating dependencies for module → {module}")
+        logger.log(f"🔥 Evaluating dependencies for module → {module}")
         for dependency in dependencies_per_module(gradle_runner, module):
             dependencies.add(dependency)
             if not ocurrences.get(dependency):

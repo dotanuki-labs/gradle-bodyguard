@@ -44,10 +44,18 @@ def parse(args):
         help='Force program to exit with failure when issues were found'
     )
 
+    parser.add_argument(
+        '-v',
+        '--verbose',
+        action='store',
+        default=False,
+        help='Expose more execution logs'
+    )
+
     try:
         parsed = parser.parse_args(args)
         ignored = [] if parsed.ignore == '' else parsed.ignore.split(',')
-        return [parsed.project, parsed.destination, ignored, parsed.force_exit]
+        return [parsed.project, parsed.destination, ignored, parsed.force_exit, parsed.verbose]
     except:
         print(f"\nLearn more about with {blue('gradle-bodyguard --help')}")
         sys.exit(0)

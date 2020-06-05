@@ -9,6 +9,7 @@ from . import vulnerabilities_matcher
 
 from .gradle_runner import GradleTaskRunner
 from .ossindex_fetcher import OSSIndexFetcher
+from .utils.logging import Logger
 from .utils.cli_colorizer import cyan
 
 import sys
@@ -18,32 +19,34 @@ def main(argv=None):
 
     print(f"\n\n{cyan('GradleBodyguard (version 0.0.3)')}\n")
 
-    (project, destination, ignore, force_exit) = cli_parser.parse(argv)
+    (project, destination, ignore, force_exit, verbose) = cli_parser.parse(argv)
 
-    print("Running with :\n")
+    logger = Logger(verbose)
+
+    logger.log("Running with :\n")
     print(f"🤖 Target project → {project}")
-    print(f"🤖 Reporting to → {destination}")
-    print(f"🤖 Ignoring CVEs → {ignore if len(ignore) > 0 else 'None'}\n")
+    logger.log(f"🤖 Reporting to → {destination}")
+    logger.log(f"🤖 Ignoring CVEs → {ignore if len(ignore) > 0 else 'None'}\n")
 
     gradlew = gradlew_locator.locate(project)
 
-    print(f"🔥 Gradlew found at → {gradlew}")
+    logger.log(f"🔥 Gradlew found at → {gradlew}")
 
     runner = GradleTaskRunner(gradlew)
 
-    print("🔥 Start scanning Gradle project ...")
+    logger.log("🔥 Start scanning Gradle project ...")
 
-    (dependencies, ocurrences) = gradle_scanner.scan(runner)
+    (dependencies, ocurrences) = gradle_scanner.scan(runner, logger)
 
-    print(f"🔥 Total number of dependencies found → {len(dependencies)}")
-    print("🔥 Matching against OSS Index ... ")
+    logger.log(f"🔥 Total number of dependencies found → {len(dependencies)}")
+    logger.log("🔥 Matching against OSS Index ... ")
     fetcher = OSSIndexFetcher()
     vulnerabilities = vulnerabilities_matcher.match(dependencies, fetcher)
 
-    print("🔥 Generating security report ... ")
+    logger.log("🔥 Generating security report ... ")
     report = report_generator.generate(vulnerabilities, ocurrences, ignore)
     security_reporter.deliver(report, destination)
-    print("\n🤖 Done\n")
+    print.log("\n🤖 Done\n")
 
     # Break CI pipeline if needed
 

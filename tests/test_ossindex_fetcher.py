@@ -2,6 +2,7 @@ import json
 from gradle_bodyguard.ossindex_fetcher import OSSIndexFetcher
 
 FAKE_API = '/fake/api/component-report'
+FAKE_TOKEN = 'fake-token'
 
 
 def test_fetched_with_success_no_vulnerabilities(httpserver):
@@ -21,7 +22,7 @@ def test_fetched_with_success_no_vulnerabilities(httpserver):
     '''
 
     httpserver.expect_request(FAKE_API).respond_with_json(json.loads(raw))
-    fetcher = OSSIndexFetcher(httpserver.url_for(FAKE_API))
+    fetcher = OSSIndexFetcher(FAKE_TOKEN, httpserver.url_for(FAKE_API))
 
     # When
     found = fetcher.fetch([])
@@ -50,7 +51,7 @@ def test_fetched_with_success_found_vulnerabilities(httpserver):
     '''
 
     httpserver.expect_request(FAKE_API).respond_with_json(json.loads(raw))
-    fetcher = OSSIndexFetcher(httpserver.url_for(FAKE_API))
+    fetcher = OSSIndexFetcher(FAKE_TOKEN, httpserver.url_for(FAKE_API))
 
     # When
     found = fetcher.fetch([])
@@ -74,7 +75,7 @@ def test_fetch_error_badrequest(httpserver):
     '''
 
     httpserver.expect_request(FAKE_API).respond_with_json(json.loads(raw), status=400)
-    fetcher = OSSIndexFetcher(httpserver.url_for(FAKE_API))
+    fetcher = OSSIndexFetcher(FAKE_TOKEN, httpserver.url_for(FAKE_API))
 
     # When
     found = fetcher.fetch([])
@@ -95,7 +96,7 @@ def test_fetch_error_internal_server(httpserver):
     '''
 
     httpserver.expect_request(FAKE_API).respond_with_json(json.loads(raw), status=503)
-    fetcher = OSSIndexFetcher(httpserver.url_for(FAKE_API))
+    fetcher = OSSIndexFetcher(FAKE_TOKEN, httpserver.url_for(FAKE_API))
 
     # When
     found = fetcher.fetch([])

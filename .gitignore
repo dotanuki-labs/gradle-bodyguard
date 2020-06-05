@@ -1,3 +1,5 @@
+*.py[cod]
+*$py.class
 .pytest_cache
 *egg-info
 dist

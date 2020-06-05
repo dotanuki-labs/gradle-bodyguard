@@ -53,8 +53,8 @@ def parse(args):
     )
 
     parser.add_argument(
-        '-v',
-        '--verbose',
+        '-s',
+        '--silent',
         action='store',
         default=False,
         help='Expose more execution logs'
@@ -69,7 +69,7 @@ def parse(args):
             ignored,
             parsed.token,
             parsed.force_exit,
-            parsed.verbose
+            parsed.silent
         ]
     except:
         print(f"\nLearn more about with {blue('gradle-bodyguard --help')}")

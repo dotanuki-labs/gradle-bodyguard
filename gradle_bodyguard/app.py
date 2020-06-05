@@ -21,9 +21,9 @@ def main(argv=None):
     logo = f"GradleBodyguard(version {constants.APP_VERSION})"
     print(f"\n\n{cyan(logo)}\n")
 
-    (project, destination, ignore, api_token, force_exit, verbose) = cli_parser.parse(argv)
+    (project, destination, ignore, api_token, force_exit, silent) = cli_parser.parse(argv)
 
-    logger = Logger(verbose)
+    logger = Logger(silent)
 
     logger.log("Running with :\n")
     print(f"🤖 Target project → {project}")

@@ -1,5 +1,13 @@
 # Gradle Bodyguard
 
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/gradle-bodyguard)
+![Flake8](https://img.shields.io/badge/codestyle-flake8-yellow)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b3621a376e8b31001a69/maintainability)](https://codeclimate.com/github/dotanuki-labs/gradle-bodyguard/maintainability)
+[![codecov](https://codecov.io/gh/dotanuki-labs/gradle-bodyguard/branch/master/graph/badge.svg)](https://codecov.io/gh/dotanuki-labs/gradle-bodyguard)
+[![PyPI](https://img.shields.io/pypi/v/gradle-bodyguard)](https://pypi.org/project/gradle-bodyguard/)
+![Main](https://github.com/dotanuki-labs/gradle-bodyguard/workflows/Main/badge.svg)
+[![License](https://img.shields.io/github/license/dotanuki-labs/gradle-bodyguard)](https://choosealicense.com/licenses/mit)
+
 ![](.github/assets/showcase.gif)
 
 ## What is this?

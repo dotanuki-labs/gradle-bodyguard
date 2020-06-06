@@ -5,3 +5,6 @@
 dist
 .DS_STORE
 __pycache__
+
+.coverage
+coverage.xml

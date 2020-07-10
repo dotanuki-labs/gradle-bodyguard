@@ -1,6 +1,5 @@
 from gradle_bodyguard import app
 
-import json
 import os
 
 # Note : using tmpdir fixture from pytest
@@ -34,5 +33,6 @@ def test_integration_against_plaid(tmpdir):
     # When
     app.main(argv)
 
+    # Then
     written = open(f"{tmpdir}/gradle-bodyguard-report.json").read()
     assert 'CVE-2018-20200' in written

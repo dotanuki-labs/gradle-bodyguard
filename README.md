@@ -29,7 +29,7 @@ However, when talking particularly about Gradle projects things start to become 
 - OWASP DependencyCheck is quite trick to be used in Android projects.
 
 
-`gradle-bodyguard` was born to tackle these issues. Written in Python and running as a CLI tool, it requires no additional plugins in your project and exercises your Gradle build - regardless your project layout - and learns about the dependencies that **Gradle already knows**, even the transitive ones.
+`gradle-bodyguard` was born to tackle these issues. Written in Python and running as a CLI tool, it is **an experimental tool** which requires no additional plugins in your project and exercises your Gradle build - regardless your project layout - and learns about the dependencies that **Gradle already knows**, even the transitive ones.
 
 `gradle-bodyguard` then matches these artifacts against [OSS Index](https://ossindex.sonatype.org/) and outputs the results for you. In this way, you can learn (and automate around) when some dependency introduces a new disclosed [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures) in your build, particularly at CI level.
 
@@ -72,10 +72,6 @@ See usage for a full list of options
 ```
 → gradle-bodyguard --help
 ```
-
-## Using as a Github Action
-
-Coming soon 🔥
 
 ## Limitations
 

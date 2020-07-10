@@ -34,20 +34,5 @@ def test_integration_against_plaid(tmpdir):
     # When
     app.main(argv)
 
-    # Then
-    # We ignored all CVEs other than OkHttp in this cae
-    expected = {
-        'has_issues': True,
-        'issues': [
-            {
-                'cve': 'CVE-2018-20200',
-                'dependency': 'com.squareup.okhttp3:okhttp:3.12.0',
-                'learn_more': 'https://nvd.nist.gov/vuln/detail/CVE-2018-20200',
-                'usage_samples': ':about, :app, :core'
-            }
-        ]
-    }
-
-    written = open(f"{tmpdir}/gradle-bodyguard-report.json")
-    reported = json.load(written)
-    assert expected == reported
+    written = open(f"{tmpdir}/gradle-bodyguard-report.json").read()
+    assert 'CVE-2018-20200' in written

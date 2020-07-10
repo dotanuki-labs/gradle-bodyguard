@@ -18,7 +18,7 @@ import sys
 
 def main(argv=None):
 
-    logo = f"GradleBodyguard(version {constants.APP_VERSION})"
+    logo = f"GradleBodyguard (version {constants.APP_VERSION})"
     print(f"\n\n{cyan(logo)}\n")
 
     (project, destination, ignore, api_token, force_exit, silent) = cli_parser.parse(argv)

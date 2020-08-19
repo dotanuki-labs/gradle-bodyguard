@@ -201,13 +201,13 @@ description = "pytest-httpserver is a httpserver for pytest"
 name = "pytest-httpserver"
 optional = false
 python-versions = ">=3.4"
-version = "0.3.4"
+version = "0.3.5"
 
 [package.dependencies]
 werkzeug = "*"
 
 [package.extras]
-dev = ["coverage", "ipdb", "pycodestyle", "pylint", "pytest", "pytest-cov", "reno", "requests", "rope", "sphinx", "sphinx-rtd-theme", "wheel"]
+dev = ["autopep8", "coverage", "flake8", "ipdb", "pytest", "pytest-cov", "reno", "requests", "rope", "sphinx", "sphinx-rtd-theme", "wheel"]
 test = ["coverage", "pytest", "pytest-cov", "requests"]
 
 [[package]]
@@ -270,7 +270,7 @@ dev = ["pytest", "pytest-timeout", "coverage", "tox", "sphinx", "pallets-sphinx-
 watchdog = ["watchdog"]
 
 [metadata]
-content-hash = "636dad0de79214f6dc53b8d10f22e9f722d2da03f19db93b93f04df738c5240c"
+content-hash = "c52e0d11b1488cecceb10cc63c1b08f3ea74778921d6a6a1c34c84eefbd8ba72"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -380,8 +380,8 @@ pytest-cov = [
     {file = "pytest_cov-2.9.0-py2.py3-none-any.whl", hash = "sha256:c87dfd8465d865655a8213859f1b4749b43448b5fae465cb981e16d52a811424"},
 ]
 pytest-httpserver = [
-    {file = "pytest_httpserver-0.3.4-py3-none-any.whl", hash = "sha256:7feab352b2626d1a0ecdebffcac5e5875979f08ad7e621b2289980ce8f6ebc5b"},
-    {file = "pytest_httpserver-0.3.4.tar.gz", hash = "sha256:c7269aed8b4f2d24e41eaa2034dd9ab7ae02b0cb6e71afeae93127832920ec8d"},
+    {file = "pytest_httpserver-0.3.5-py3-none-any.whl", hash = "sha256:c55289404b7604bfd1c103d243824b441add501828e05807795c2b851b9b0747"},
+    {file = "pytest_httpserver-0.3.5.tar.gz", hash = "sha256:1d553dc0fb27483d00a1e25ddcfc38bd3438336ed60f862cad8c50b11621a11a"},
 ]
 requests = [
     {file = "requests-2.24.0-py2.py3-none-any.whl", hash = "sha256:fe75cc94a9443b9246fc7049224f75604b113c36acb93f87b80ed42c44cbb898"},

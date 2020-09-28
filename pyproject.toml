@@ -21,7 +21,7 @@ flake8 = "^3.8.2"
 pytest-cov = "^2.9.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.0"
+pytest = "^6.1"
 pytest-httpserver = "^0.3.5"
 
 [tool.poetry.scripts]

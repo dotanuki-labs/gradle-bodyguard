@@ -19,7 +19,10 @@ jobs:
           python-version: '3.8.x'
 
       - name: Install Poetry
-        uses: dschep/install-poetry-action@v1.3
+        uses: snok/install-poetry@v1.1.1
+        with:
+          virtualenvs-create: false
+          virtualenvs-in-project: false
 
       - name: Install dependencies
         run: make install

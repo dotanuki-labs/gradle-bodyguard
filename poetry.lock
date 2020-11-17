@@ -116,6 +116,17 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 dev = ["pre-commit", "tox"]
 
 [[package]]
+name = "pretty-errors"
+version = "1.2.18"
+description = "Prettifies Python exception output to make it legible."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+colorama = "*"
+
+[[package]]
 name = "py"
 version = "1.9.0"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
@@ -261,7 +272,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "63fb39fdd040e32752d47198ba9fc7152c8fa3b4dfa975441118fce76814952b"
+content-hash = "fc8a2c39c4cdcaf6c5a39ea3600cf09c80226891e1cf0ca9483fa4ab1f25adcb"
 
 [metadata.files]
 atomicwrites = [
@@ -340,6 +351,10 @@ packaging = [
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
+]
+pretty-errors = [
+    {file = "pretty_errors-1.2.18-py3-none-any.whl", hash = "sha256:4adbc98f23430879d6aac0b247d66378c33941ad1a153ab9f6e1770a532ebd0a"},
+    {file = "pretty_errors-1.2.18.tar.gz", hash = "sha256:6e01ddd96c552fecf632a30145f04aa4cb5c272b61e80d2aaaa9d7dab6f223fd"},
 ]
 py = [
     {file = "py-1.9.0-py2.py3-none-any.whl", hash = "sha256:366389d1db726cd2fcfc79732e75410e5fe4d31db13692115529d34069a043c2"},

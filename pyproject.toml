@@ -19,6 +19,7 @@ python = "^3.8"
 requests = "^2.23.0"
 flake8 = "^3.8.2"
 pytest-cov = "^2.9.0"
+pretty-errors = "^1.2.18"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1"

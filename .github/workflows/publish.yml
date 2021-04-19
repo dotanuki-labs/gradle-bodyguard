@@ -19,7 +19,7 @@ jobs:
           python-version: '3.8.x'
 
       - name: Install Poetry
-        uses: snok/install-poetry@v1.1.3
+        uses: snok/install-poetry@v1.1.4
         with:
           virtualenvs-create: false
           virtualenvs-in-project: false

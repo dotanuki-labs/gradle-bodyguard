@@ -17,7 +17,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 requests = "^2.23.0"
-flake8 = "^3.8.2"
+flake8 = ">=3.8.2,<5.0.0"
 pytest-cov = "^2.9.0"
 pretty-errors = "^1.2.18"
 

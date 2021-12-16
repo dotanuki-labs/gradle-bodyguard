@@ -23,7 +23,7 @@ pretty-errors = "^1.2.18"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
-pytest-httpserver = "^1.0.1"
+pytest-httpserver = "^1.0.3"
 
 [tool.poetry.scripts]
 gradle-bodyguard = "gradle_bodyguard:main"

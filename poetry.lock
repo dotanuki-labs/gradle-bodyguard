@@ -200,18 +200,19 @@ testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtuale
 
 [[package]]
 name = "pytest-httpserver"
-version = "1.0.1"
+version = "1.0.3"
 description = "pytest-httpserver is a httpserver for pytest"
 category = "dev"
 optional = false
-python-versions = ">=3.4"
+python-versions = ">=3.6,<4.0"
 
 [package.dependencies]
-werkzeug = "*"
+Werkzeug = ">=2.0.0"
 
 [package.extras]
-dev = ["flake8", "wheel", "pytest", "pytest-cov", "coverage", "ipdb", "requests", "sphinx", "sphinx-rtd-theme", "reno", "autopep8"]
-test = ["pytest", "pytest-cov", "coverage", "requests"]
+dev = ["autopep8", "coverage", "flake8", "ipdb", "mypy", "pytest-cov", "pytest", "reno", "requests", "sphinx", "sphinx-rtd-theme", "types-requests"]
+test = ["coverage", "flake8", "mypy", "pytest-cov", "pytest", "requests", "types-requests"]
+doc = ["reno", "sphinx", "sphinx-rtd-theme"]
 
 [[package]]
 name = "requests"
@@ -262,20 +263,19 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "werkzeug"
-version = "1.0.1"
+version = "2.0.2"
 description = "The comprehensive WSGI web application library."
 category = "dev"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+python-versions = ">=3.6"
 
 [package.extras]
-dev = ["pytest", "pytest-timeout", "coverage", "tox", "sphinx", "pallets-sphinx-themes", "sphinx-issues"]
 watchdog = ["watchdog"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "43da23658048c5967b724cddbc069def9431aacced34cbb8a924281d4837bc7f"
+content-hash = "ea7bc9e1025eec2895a0860a65bdef26e7c1ffaf3c02b762582c971ecfb7c010"
 
 [metadata.files]
 atomicwrites = [
@@ -405,8 +405,8 @@ pytest-cov = [
     {file = "pytest_cov-2.12.1-py2.py3-none-any.whl", hash = "sha256:261bb9e47e65bd099c89c3edf92972865210c36813f80ede5277dceb77a4a62a"},
 ]
 pytest-httpserver = [
-    {file = "pytest_httpserver-1.0.1-py3-none-any.whl", hash = "sha256:3b2663b539849a2e5bd7d7f380a99b19c4650e154581af699ad6431b5424cacc"},
-    {file = "pytest_httpserver-1.0.1.tar.gz", hash = "sha256:e359c5722ce2bd3bb68f4606f57d5c846e52bf7c748a70de4a3097bb91006089"},
+    {file = "pytest_httpserver-1.0.3-py3-none-any.whl", hash = "sha256:f613b4dbb18cb2b2d78a8f6a66f22c4fea92167684d9ae355e33776759794827"},
+    {file = "pytest_httpserver-1.0.3.tar.gz", hash = "sha256:87561c4fa6a7bc306d76d1979a3eb9d54eb26bfb2f3f51f1643bf3c090ce629d"},
 ]
 requests = [
     {file = "requests-2.26.0-py2.py3-none-any.whl", hash = "sha256:6c1246513ecd5ecd4528a0906f910e8f0f9c6b8ec72030dc9fd154dc1a6efd24"},
@@ -425,6 +425,6 @@ urllib3 = [
     {file = "urllib3-1.25.9.tar.gz", hash = "sha256:3018294ebefce6572a474f0604c2021e33b3fd8006ecd11d62107a5d2a963527"},
 ]
 werkzeug = [
-    {file = "Werkzeug-1.0.1-py2.py3-none-any.whl", hash = "sha256:2de2a5db0baeae7b2d2664949077c2ac63fbd16d98da0ff71837f7d1dea3fd43"},
-    {file = "Werkzeug-1.0.1.tar.gz", hash = "sha256:6c80b1e5ad3665290ea39320b91e1be1e0d5f60652b964a3070216de83d2e47c"},
+    {file = "Werkzeug-2.0.2-py3-none-any.whl", hash = "sha256:63d3dc1cf60e7b7e35e97fa9861f7397283b75d765afcaefd993d6046899de8f"},
+    {file = "Werkzeug-2.0.2.tar.gz", hash = "sha256:aa2bb6fc8dee8d6c504c0ac1e7f5f7dc5810a9903e793b6f715a9f015bdadb9a"},
 ]

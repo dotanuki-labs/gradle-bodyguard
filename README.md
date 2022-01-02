@@ -8,11 +8,11 @@
 ![Main](https://github.com/dotanuki-labs/gradle-bodyguard/workflows/Main/badge.svg)
 [![License](https://img.shields.io/github/license/dotanuki-labs/gradle-bodyguard)](https://choosealicense.com/licenses/mit)
 
-![](.github/assets/showcase.gif)
+## Deprecation notice
 
-## What is this?
+> ⚠️ This experiment is no longer being improved neither maintened. Thanks for your interestd!
 
-> *Complete blog post to come. Stay tunned!*
+## What was this?
 
 [Supply chain attacks](https://arstechnica.com/information-technology/2020/04/725-bitcoin-stealing-apps-snuck-into-ruby-repository/) are a reality and the JVM ecosystem is not safe.
 
@@ -27,7 +27,6 @@ However, when talking particularly about Gradle projects things start to become 
 - Gradle plugins for such type of tools eventually are available, but this means another plugin in your Gradle build;
 
 - OWASP DependencyCheck is quite trick to be used in Android projects.
-
 
 `gradle-bodyguard` was born to tackle these issues. Written in Python and running as a CLI tool, it is **an experimental tool** which requires no additional plugins in your project and exercises your Gradle build - regardless your project layout - and learns about the dependencies that **Gradle already knows**, even the transitive ones.
 
